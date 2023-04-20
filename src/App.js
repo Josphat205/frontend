@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+import Auth from "./pages/auth";
+import CreateRecipe from "./pages/createRecipe";
+import SavedRecipe from "./pages/savedRecipe";
+import Navbar from "./components/Navbar";
+import Login from "./pages/login";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <ToastContainer position="top-right" autoClose={2000} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Auth />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/create-recipe" element={<CreateRecipe />} />
+        <Route path="/saved-recipe" element={<SavedRecipe />} />
+      </Routes>
+    </Router>
   );
 }
 
